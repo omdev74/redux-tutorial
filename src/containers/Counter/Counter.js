@@ -9,24 +9,6 @@ class Counter extends Component {
         counter: 0
     }
 
-    counterChangedHandler = ( action, value ) => {
-        switch ( action ) {
-            case 'inc':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + 1 } } )
-                break;
-            case 'dec':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - 1 } } )
-                break;
-            case 'add':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + value } } )
-                break;
-            case 'sub':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
-                break;
-            default:
-                
-        }
-    }
 
     render () {
         return (
@@ -36,6 +18,16 @@ class Counter extends Component {
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
                 <CounterControl label="Add 10" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract 15 " clicked={this.props.onSubtractCounter}  />
+                <hr></hr>
+                <CounterControl label="Store" clicked={this.props.onStoreCounter}></CounterControl>
+                <ul>
+                    {this.props.Storedresults.map(strResult=>(
+                        <li key={strResult.id}onClick={()=>this.props.onDeleteResult(strResult.id)}>
+                            {strResult.value}
+                        </li>)
+                        )}
+                    
+                </ul>
             </div>
         );
     }
@@ -43,7 +35,8 @@ class Counter extends Component {
 
 const mapStateToProps = state =>{
     return{
-        ctr: state.counter
+        ctr: state.counter,
+        Storedresults: state.results
     }
 }
 const mapDispatchToProps = dispatch=>{
@@ -52,6 +45,9 @@ const mapDispatchToProps = dispatch=>{
         onDecrementCounter: () => dispatch({type:"DEC_COUNTER"}),
         onAddCounter: () => dispatch({type:"ADD_COUNTER",value:10}),
         onSubtractCounter: () => dispatch({type:"SUB_COUNTER",value:15}),
+
+        onStoreCounter: () => dispatch({type:"STORE_RESULT"}),
+        onDeleteResult: (id) => dispatch({type:"DELETE_RESULT",resultElId:id})
         
 
     }
