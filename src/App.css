@@ -18,3 +18,17 @@
     display: flex;
     overflow: hidden;
 } */
+ul{
+  background-color: white;
+  border-radius: 10px;
+  width: 30%;
+  margin: 10px 35% 10px 35% ;
+  list-style: none;
+  text-align: center;
+  padding-left: 0px;
+  padding: 5px;
+  
+}
+ul li{
+  padding: 5px;
+}

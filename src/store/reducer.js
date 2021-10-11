@@ -1,33 +1,34 @@
+import * as actionTypes from "./actions"
 const initialState = {
     counter:10,
     results:[]
 }
 const reducer = (state = initialState,action)=>{
     switch (action.type) {
-        case "INC_COUNTER":
+        case actionTypes.INC_COUNTER:
             return{
                 ...state,
                 counter: state.counter + 1
             }
             
-        case "DEC_COUNTER":
+        case actionTypes.DEC_COUNTER:
             return{
                 ...state,
                 counter: state.counter -1
             }
 
-        case "ADD_COUNTER":
+        case actionTypes.ADD_COUNTER:
             return{
                 ...state,
                 counter: state.counter + action.value
             }
         
-        case "SUB_COUNTER":
+        case actionTypes.SUB_COUNTER:
             return{
                 ...state,
                 counter: state.counter - action.value
             }
-        case"STORE_RESULT":
+        case actionTypes.STORE_RESULT:
             const date = new Date()
             const resId = date.getTime()
             console.log(resId)
@@ -35,7 +36,7 @@ const reducer = (state = initialState,action)=>{
                 ...state,
                 results: state.results.concat({id:resId,value:state.counter})
             }
-        case"DELETE_RESULT":
+        case actionTypes.DELETE_RESULT:
             // const id = 2;
             // const newArray = [...state.results]
             // newArray.splice(id, 1)
