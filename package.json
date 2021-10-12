@@ -1,6 +1,6 @@
 {
   "name": "react-complete-guide",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "private": true,
   "dependencies": {
     "react": "^16.0.0",
